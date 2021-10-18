@@ -19,7 +19,7 @@ function dcwpurl($url){
     
   	if(strpos($url, "wp.com")!== false){return $url;} // this means the job is done no need to try to do it again to avoid redundance
 	
-    if(strpos($url, ".jpg") == false || strpos($url, ".jpeg") == false || strpos($url, ".png") == false || strpos($url, ".gif") == false){
+    if(strpos($url, ".jpg") == false && strpos($url, ".jpeg") == false && strpos($url, ".png") == false && strpos($url, ".gif") == false){
         
         return $url; // limit operation to image file extentions
     }
@@ -41,7 +41,7 @@ add_filter('wp_get_attachment_url', 'dcwpurl'); // hook to image src filter
 
 function dwpcdn($buffer){
     
-      # This function enables on-the-fly update of images src not changeable by the dcwpcdn function in media library and those called via ajax
+      # This function enables on-the-fly update of images src not changeable by the dcwpcdn function in media library and those called via ajax or non-standard wp methods
 
 	$dsturl = preg_replace('#(https\:\/\/|http\:\/\/|\/\/)#', '', site_url());	
 		
